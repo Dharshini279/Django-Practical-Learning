@@ -1,7 +1,6 @@
 ## BASICS (Foundation)
     
     Python OOP recap
-    Virtualenv & pip
     Django installation
     Project structure
     App structure
