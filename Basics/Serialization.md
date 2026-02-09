@@ -11,6 +11,8 @@ So you can:
 
 Reverse process = **Deserialization**
 
+---
+
 ### Why serialization matters (real life)
 
 In Django/DRF:
@@ -21,6 +23,8 @@ In Django/DRF:
 * Store sessions
 
 Frameworks do this *constantly*.
+
+---
 
 ### JSON Serialization
 
@@ -84,6 +88,8 @@ json.dumps(User("Ram"), cls=UserEncoder)
 ```
 Django REST Framework serializers do exactly this internally.
 
+---
+
 ### Pickle Serialization (Python internal)
 
 Pickle converts Python objects → binary format.
@@ -102,6 +108,7 @@ data = {"a": 1}
 binary = pickle.dumps(data)
 obj = pickle.loads(binary)
 ```
+---
 
 ### Pickle Warning (VERY IMPORTANT)
 
@@ -114,6 +121,8 @@ pickle.loads(data_from_user)   # DANGEROUS
 Why?
 Pickle can execute code.
 Pickle is powerful but unsafe for external data.
+
+---
 
 ### JSON vs Pickle
 
@@ -130,6 +139,8 @@ Pickle is powerful but unsafe for external data.
 
 * API → JSON
 * Python internal → Pickle
+
+---
 
 ### Serialization in Django/DRF
 
@@ -155,6 +166,8 @@ JSON → serializer → Python → DB save
 ```
 
 This is **controlled serialization**.
+
+---
 
 ### Advanced concept
 
@@ -202,6 +215,8 @@ But:
 
 So production APIs use JSON.
 
+---
+
 ### Real-world deep example
 
 Celery task queue:
@@ -215,6 +230,7 @@ Redis cache:
 ```
 object → pickle → store → unpickle → retrieve
 ```
+---
 
 ### One-line memory trick
 
