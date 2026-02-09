@@ -1,4 +1,5 @@
 ## Python OOP — Complete Concepts with Simple Explanations
+---
 
 ### 1. OOP Basics
 
@@ -10,7 +11,6 @@ It defines variables (attributes) and functions (methods) that objects will have
 class Car:
     pass
 ````
----
 
 #### Object
 
@@ -20,7 +20,6 @@ It is the real usable entity created from the class blueprint.
 ```python
 c1 = Car()   # object of Car class
 ```
----
 
 #### Attributes
 
@@ -32,7 +31,6 @@ class Car:
     def __init__(self):
         self.color = "red"
 ```
----
 
 #### Methods
 
@@ -44,7 +42,6 @@ class Car:
     def start(self):
         print("Car started")
 ```
----
 
 #### self
 
@@ -56,7 +53,6 @@ class Car:
     def show(self):
         print(self)
 ```
----
 
 #### **init** (Constructor)
 
@@ -68,7 +64,6 @@ class Car:
     def __init__(self, color):
         self.color = color
 ```
----
 
 #### Instance Variable
 
@@ -83,7 +78,6 @@ class Car:
 c1 = Car("red")
 c2 = Car("blue")
 ```
----
 
 #### Class Variable
 
@@ -98,6 +92,7 @@ c1 = Car()
 c2 = Car()
 ```
 ---
+
 ## 2. Encapsulation
 
 #### What is Encapsulation?
@@ -105,8 +100,6 @@ Encapsulation means **bundling data (variables) and methods (functions) inside a
 and **controlling how that data is accessed or modified** from outside.
 
 Purpose: Protect data and prevent direct unwanted changes.
-
----
 
 #### Types of Access
 
@@ -121,7 +114,6 @@ class A:
 obj = A()
 print(obj.name)   # accessible
 ````
----
 
 #### 2. Protected Variable `_var`
 
@@ -136,7 +128,6 @@ class A:
 obj = A()
 print(obj._age)   # possible but not recommended
 ```
----
 
 #### 3. Private Variable `__var`
 
@@ -154,8 +145,6 @@ obj = A()
 
 Access internally only.
 
----
-
 #### Getter and Setter
 
 #### Getter → read value safely
@@ -170,7 +159,6 @@ class A:
     def get_x(self):
         return self.__x
 ```
----
 
 #### Setter → update value safely
 
@@ -184,7 +172,6 @@ class A:
     def set_x(self, value):
         self.__x = value
 ```
----
 
 #### Property Decorator (Best Practice)
 
@@ -210,7 +197,6 @@ obj = A()
 print(obj.x)   # getter
 obj.x = 50     # setter
 ```
----
 
 #### Purpose of Encapsulation
 
@@ -232,16 +218,12 @@ The user knows *what a class does*, but not *how it does it*.
 
 Purpose: Reduce complexity and protect internal logic.
 
----
-
 #### Real-Life Idea
 When you drive a car:
 - You use steering, brake, accelerator  
 - You don’t know engine internals  
 
 That is abstraction.
-
----
 
 #### How to Implement in Python
 Python provides abstraction using the **abc module** (Abstract Base Class).
@@ -250,7 +232,6 @@ Tools:
 - `abc` module  
 - `ABC` class  
 - `@abstractmethod` decorator  
----
 
 #### Abstract Class
 A class that contains one or more abstract methods.  
@@ -264,7 +245,6 @@ class Animal(ABC):
     def sound(self):
         pass
 ````
----
 
 #### Abstract Method
 
@@ -282,7 +262,6 @@ Usage:
 d = Dog()
 d.sound()
 ```
----
 
 #### Why Use Abstraction?
 
@@ -291,7 +270,6 @@ d.sound()
 * Provide common interface
 * Improve code design
 * Maintain security
----
 
 #### Key Points
 
@@ -301,15 +279,13 @@ d.sound()
 
 ---
 
-### 4. Inheritance (Clear Notes)
+### 4. Inheritance
 
 #### What is Inheritance?
 Inheritance allows a **child class** to use properties and methods of a **parent class**.  
 It helps reuse code and extend functionality without rewriting.
 
 Purpose: Code reuse and better structure.
-
----
 
 #### Basic Example
 ```python
@@ -322,8 +298,7 @@ class Dog(Animal):
 
 d = Dog()
 d.eat()   # inherited method
-````
----
+```
 
 #### Types of Inheritance
 
@@ -338,7 +313,6 @@ class A:
 class B(A):
     pass
 ```
----
 
 #### 2. Multiple Inheritance
 
@@ -351,7 +325,6 @@ class B: pass
 class C(A, B):
     pass
 ```
----
 
 #### 3. Multilevel Inheritance
 
@@ -362,7 +335,6 @@ class A: pass
 class B(A): pass
 class C(B): pass
 ```
----
 
 #### 4. Hierarchical Inheritance
 
@@ -374,7 +346,6 @@ class A: pass
 class B(A): pass
 class C(A): pass
 ```
----
 
 #### 5. Hybrid Inheritance
 
@@ -386,7 +357,6 @@ class B(A): pass
 class C(A): pass
 class D(B, C): pass
 ```
----
 
 #### Method Overriding
 
@@ -401,7 +371,6 @@ class B(A):
     def show(self):
         print("Child")
 ```
----
 
 #### super()
 
@@ -417,7 +386,6 @@ class B(A):
         super().show()
         print("Child")
 ```
----
 
 #### MRO (Method Resolution Order)
 
@@ -434,8 +402,6 @@ Output order shows:
 `B → A → object`
 Python searches methods in this exact order.
 
----
-
 #### Why Use Inheritance?
 
 * Reuse existing code
@@ -446,47 +412,248 @@ Python searches methods in this exact order.
 
 ---
 
-## 5. Polymorphism
-Same function → different behavior  
+### 5. Polymorphism
 
-Types:
-- Method overriding  
-- Operator overloading  
-- Duck typing  
+#### What is Polymorphism?
+Polymorphism means **same method or operator behaves differently** depending on the object.  
+In simple terms: one interface → many forms.
 
-Example:
-`+` works for numbers and strings  
+Purpose: Flexibility and reusable code.
 
-Purpose: Flexibility
+##### Example Idea
+The `+` operator:
+- Adds numbers  
+- Joins strings  
+
+```python
+print(2 + 3)        # 5
+print("a" + "b")    # ab
+````
+Same operator, different behavior → polymorphism.
+
+#### Types of Polymorphism
+
+##### 1. Method Overriding
+
+Child class changes parent class method behavior.
+
+```python
+class Animal:
+    def sound(self):
+        print("Animal sound")
+
+class Dog(Animal):
+    def sound(self):
+        print("Bark")
+```
+
+##### 2. Operator Overloading
+
+Custom behavior for operators using dunder methods.
+
+```python
+class A:
+    def __init__(self, x):
+        self.x = x
+
+    def __add__(self, other):
+        return self.x + other.x
+```
+
+##### 3. Duck Typing
+
+If an object behaves like required, Python accepts it.
+Type doesn't matter, behavior matters.
+
+```python
+class Dog:
+    def speak(self):
+        print("Bark")
+
+class Cat:
+    def speak(self):
+        print("Meow")
+
+def make_sound(animal):
+    animal.speak()
+```
+
+#### Why Use Polymorphism?
+
+* Write flexible code
+* Reuse same method names
+* Support different object types
+* Cleaner design
 
 ---
 
-## 6. Dunder (Magic) Methods
-Special methods with `__`
+### 6. Dunder (Magic) Methods (Clear Notes)
 
-Common:
-- `__init__` → constructor  
-- `__str__` → print friendly  
-- `__repr__` → debug view  
-- `__len__` → length  
-- `__add__` → + operator  
-- `__eq__` → ==  
-- `__call__` → object callable  
-- `__iter__`, `__next__` → iteration  
+#### What are Dunder Methods?
+Dunder (double underscore) methods are **special built-in methods** in Python  
+that let you **customize how objects behave** with operators and built-in functions.
 
-Purpose: Customize behavior
+They start and end with `__`.
+
+Purpose: Make custom objects behave like built-in Python objects.
+
+#### Common Dunder Methods
+
+### `__init__`
+Constructor called when object is created.  
+Used to initialize object data.
+
+```python
+class A:
+    def __init__(self, x):
+        self.x = x
+````
+
+##### `__str__`
+
+Controls what prints when using `print(object)`.
+Gives user-friendly output.
+
+```python
+class A:
+    def __str__(self):
+        return "Hello"
+```
+
+##### `__repr__`
+
+Used for debugging and developer view.
+Shows detailed representation of object.
+
+```python
+class A:
+    def __repr__(self):
+        return "A()"
+```
+
+##### `__len__`
+
+Defines behavior of `len(object)`.
+
+```python
+class A:
+    def __len__(self):
+        return 5
+```
+
+##### `__add__`
+
+Defines behavior of `+` operator for objects.
+
+```python
+class A:
+    def __init__(self, x):
+        self.x = x
+
+    def __add__(self, other):
+        return self.x + other.x
+```
+
+##### `__eq__`
+
+Defines behavior of `==` comparison.
+
+```python
+def __eq__(self, other):
+    return self.x == other.x
+```
+
+##### `__call__`
+
+Makes object behave like a function.
+
+```python
+class A:
+    def __call__(self):
+        print("Called")
+
+a = A()
+a()   # works like function
+```
+
+##### `__iter__` and `__next__`
+
+Used to make object iterable (loopable).
+
+```python
+def __iter__(self):
+    return self
+
+def __next__(self):
+    return 1
+```
+
+#### Why Use Dunder Methods?
+
+* Customize operators
+* Make objects iterable
+* Improve printing
+* Support built-in functions
+* Make classes behave like native types
 
 ---
 
-## 7. Method Types
-- Instance method → uses self  
-- Class method → uses cls  
-- Static method → no self/cls  
+### 7. Method Types (Clear Notes)
 
-Decorators:
-- `@classmethod`
-- `@staticmethod`
+#### 1. Instance Method
+An instance method works with **object data** and uses `self`.  
+It can access and modify instance variables.
 
+```python
+class A:
+    def show(self):
+        print("Instance method")
+
+obj = A()
+obj.show()
+````
+
+#### 2. Class Method
+
+A class method works with the **class itself**, not a specific object.
+It uses `cls` and can access class variables.
+
+Decorator: `@classmethod`
+
+```python
+class A:
+    count = 0
+
+    @classmethod
+    def show_count(cls):
+        print(cls.count)
+```
+
+Call:
+
+```python
+A.show_count()
+```
+
+#### 3. Static Method
+
+A static method is a **utility function** inside a class.
+It does not use `self` or `cls`.
+
+Decorator: `@staticmethod`
+
+```python
+class A:
+    @staticmethod
+    def add(a, b):
+        return a + b
+```
+
+Call:
+
+```python
+A.add(2, 3)
+```
 ---
 
 ## 8. Attributes Handling
