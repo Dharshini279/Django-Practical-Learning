@@ -486,7 +486,7 @@ def make_sound(animal):
 
 ---
 
-### 6. Dunder (Magic) Methods (Clear Notes)
+### 6. Dunder (Magic) Methods
 
 #### What are Dunder Methods?
 Dunder (double underscore) methods are **special built-in methods** in Python  
@@ -597,7 +597,7 @@ def __next__(self):
 
 ---
 
-### 7. Method Types (Clear Notes)
+### 7. Method Types
 
 #### 1. Instance Method
 An instance method works with **object data** and uses `self`.  
@@ -655,7 +655,7 @@ A.add(2, 3)
 ```
 ---
 
-## 8. Attributes Handling
+### 8. Attributes Handling
 - `getattr()` → get attribute  
 - `setattr()` → set attribute  
 - `hasattr()` → check attribute  
@@ -664,122 +664,267 @@ A.add(2, 3)
 
 ---
 
-## 9. Composition vs Inheritance
-- Inheritance → is-a relationship  
-- Composition → has-a relationship  
+### 9. Composition vs Inheritance
 
-Example:
-Car has Engine → composition  
+#### Inheritance (is-a relationship)
+Inheritance means a child class **is a type of** parent class.  
+Used when classes share common behavior and structure.
 
-Preferred: Composition
+```python
+class Animal:
+    def eat(self):
+        print("Eating")
 
----
+class Dog(Animal):   # Dog is an Animal
+    pass
+````
 
-## 10. Dataclasses
-Auto-generate class methods  
+#### Composition (has-a relationship)
 
-Features:
-- `@dataclass`  
-- Auto `__init__`  
-- Auto `__repr__`  
-- Default values  
-- Frozen class  
+Composition means a class **contains another class object** inside it.
+Used when one object needs another to function.
 
-Purpose: Cleaner models
+```python
+class Engine:
+    def start(self):
+        print("Engine started")
 
----
+class Car:
+    def __init__(self):
+        self.engine = Engine()   # Car has an Engine
+```
 
-## 11. __slots__
-- Saves memory  
-- Prevents dynamic attributes  
-- Faster access  
+#### Key Difference
 
-Used in large object systems
+* Inheritance → **is-a** relationship
+* Composition → **has-a** relationship
 
----
+#### Why Composition is Preferred
 
-## 12. Metaclasses (Advanced)
-Class that creates classes  
-
-- `type` is default metaclass  
-- Control class creation  
-- Used in frameworks (Django, ORM)
-
----
-
-## 13. MRO (Method Resolution Order)
-Order Python searches for methods  
-- Important in multiple inheritance  
-- Check using:  
-`Class.mro()`
+* More flexible
+* Less tightly coupled
+* Easier to modify
+* Avoids deep inheritance chains
+* Better for large projects
 
 ---
 
-## 14. Operator Overloading
-Define behavior for operators  
+### 10. Dataclasses (Clear Notes)
 
-Examples:
-- `__add__`  
-- `__lt__`  
-- `__eq__`  
+#### What is a Dataclass?
+A dataclass is a special class used mainly to store data.  
+It automatically creates common methods like `__init__`, `__repr__`, and comparisons.
 
-Used in custom objects
+Purpose: Write cleaner and shorter model classes.
+
+#### Basic Example
+```python
+from dataclasses import dataclass
+
+@dataclass
+class User:
+    name: str
+    age: int
+````
+
+Python automatically creates:
+
+* `__init__`
+* `__repr__`
+* `__eq__`
+
+Usage:
+
+```python
+u = User("Ram", 25)
+print(u)
+```
+
+#### Default Values
+
+You can set default values easily.
+
+```python
+@dataclass
+class User:
+    name: str
+    age: int = 18
+```
+
+#### Frozen Dataclass (Immutable)
+
+Prevents modification after creation.
+
+```python
+@dataclass(frozen=True)
+class User:
+    name: str
+    age: int
+```
+
+Now values cannot be changed.
+
+#### Why Use Dataclasses?
+
+* Less boilerplate code
+* Cleaner models
+* Auto methods
+* Easy comparison
+* Good for APIs, Django-like models, configs
 
 ---
 
-## 15. Object Lifecycle
+### 11. `__slots__`
+
+####  What is `__slots__`?
+`__slots__` is used to **limit the attributes** an object can have.  
+It saves memory and makes attribute access slightly faster.
+
+Purpose: Optimize memory when creating many objects.
+
+#### Basic Example
+```python
+class User:
+    __slots__ = ["name", "age"]
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+````
+
+Now only `name` and `age` are allowed.
+
+#### Prevents Dynamic Attributes
+
+You cannot add new attributes not listed in `__slots__`.
+
+```python
+u = User("Ram", 25)
+u.city = "Chennai"   # ❌ Error
+```
+
+#### Why Use `__slots__`?
+
+* Reduces memory usage
+* Faster attribute access
+* Prevents accidental attributes
+* Useful in large-scale systems with many objects
+
+---
+
+### 12. Metaclasses (Advanced — Clear Notes)
+
+#### What is a Metaclass?
+A metaclass is a **class that creates other classes**.  
+Just like classes create objects, metaclasses create classes.
+
+In Python, the default metaclass is `type`.
+
+#### Basic Idea
+When you write a class, Python internally uses `type` to build it.
+
+```python
+class A:
+    pass
+
+print(type(A))   # <class 'type'>
+````
+
+Here, `type` created class `A`.
+
+#### Why Use Metaclasses?
+
+Metaclasses let you **control how classes are created**.
+Used in frameworks like Django ORM, DRF, etc.
+
+Common uses:
+
+* Validate class structure
+* Auto-register classes
+* Modify class attributes
+* Enforce rules
+
+#### Simple Custom Metaclass
+
+```python
+class MyMeta(type):
+    def __new__(cls, name, bases, attrs):
+        print("Creating class:", name)
+        return super().__new__(cls, name, bases, attrs)
+
+class A(metaclass=MyMeta):
+    pass
+```
+
+When class `A` is created → metaclass runs first.
+
+#### Key Points
+
+* `type` is default metaclass
+* Metaclass controls class creation
+* Advanced feature
+* Mostly used in frameworks and libraries
+
+---
+
+### 13. Object Lifecycle
 - `__new__` → create object  
 - `__init__` → initialize  
 - `__del__` → destroy  
 
 ---
 
-## 16. Callable Objects
-Object behaves like function  
+### 14. Context Managers (Clear Notes)
 
-Use:
-`__call__`
+#### What is a Context Manager?
+A context manager is used with the `with` statement to **manage resources automatically**.  
+It ensures setup happens before use and cleanup happens after use.
 
----
+Purpose: Proper resource handling (files, DB connections, locks, etc.).
 
-## 17. Iterators
-Make class iterable  
+#### How it Works
+A context manager class uses two special methods:
+- `__enter__()` → runs at start of `with`
+- `__exit__()` → runs at end of `with`
 
-Methods:
-- `__iter__`  
-- `__next__`  
+#### Basic Example
+```python
+class FileManager:
+    def __enter__(self):
+        print("Open resource")
+        return self
 
----
+    def __exit__(self, exc_type, exc, tb):
+        print("Close resource")
 
-## 18. Context Managers
-Used with `with`  
+with FileManager():
+    print("Using resource")
+````
 
-Methods:
-- `__enter__`  
-- `__exit__`  
+Output order:
 
-Purpose: resource handling
+* enter runs
+* block executes
+* exit runs
 
----
+#### Real Example (File Handling)
 
-## 19. Design Patterns
-- Singleton → one instance  
-- Factory → object creator  
-- Builder → step creation  
-- Strategy → change behavior  
-- Observer → event system  
-- Decorator → extend behavior  
+```python
+with open("test.txt", "w") as f:
+    f.write("Hello")
+```
 
----
+Python automatically:
 
-## 20. SOLID Principles
-- Single Responsibility  
-- Open/Closed  
-- Liskov Substitution  
-- Interface Segregation  
-- Dependency Inversion  
+* opens file
+* closes file after block
 
-Purpose: Clean architecture
+#### Why Use Context Managers?
+
+* Auto cleanup
+* Prevent resource leaks
+* Cleaner code
+* Safe error handling
 
 ---
 
