@@ -928,39 +928,107 @@ Python automatically:
 
 ---
 
-## 21. Descriptors (Advanced)
-Control attribute access  
+### 15. Descriptors (Advanced — Clear Notes)
 
-Methods:
-- `__get__`  
-- `__set__`  
-- `__delete__`  
+#### What is a Descriptor?
+A descriptor is a class that **controls how attributes are accessed, set, or deleted**.  
+It works using special methods and is used internally by features like `@property` and Django models.
 
-Used in:
-- Django models  
-- Properties  
+Purpose: Add custom logic when reading or writing attributes.
+
+#### Descriptor Methods
+- `__get__(self, obj, cls)` → runs when attribute is accessed  
+- `__set__(self, obj, value)` → runs when value is assigned  
+- `__delete__(self, obj)` → runs when attribute is deleted  
+
+#### Simple Example
+```python
+class MyDescriptor:
+    def __get__(self, obj, cls):
+        print("Getting value")
+        return obj._x
+
+    def __set__(self, obj, value):
+        print("Setting value")
+        obj._x = value
+````
+
+Use inside another class:
+
+```python
+class A:
+    x = MyDescriptor()
+
+a = A()
+a.x = 10     # calls __set__
+print(a.x)   # calls __get__
+```
+
+#### Where Descriptors Are Used
+
+* `@property`
+* Django model fields
+* ORM frameworks
+* Validation systems
+
+#### Key Idea
+
+Whenever you access or set an attribute,
+descriptor methods automatically run and control the behavior.
 
 ---
 
-## 22. Copying Objects
-- Shallow copy  
-- Deep copy  
-- `copy` module  
+### 16. Copying Objects (Clear Notes)
+
+#### Why Copy Objects?
+Copying creates a new object from an existing one.  
+Important when working with lists, dicts, or nested objects.
+
+Python provides shallow and deep copy.
+
+#### Shallow Copy
+Creates a new object, but **inner objects are shared**.  
+Changes inside nested objects affect both copies.
+
+```python
+import copy
+
+a = [[1, 2], [3, 4]]
+b = copy.copy(a)
+
+b[0][0] = 99
+print(a)   # also changes
+````
+
+#### Deep Copy
+
+Creates a completely independent copy.
+All nested objects are copied too.
+
+```python
+import copy
+
+a = [[1, 2], [3, 4]]
+b = copy.deepcopy(a)
+
+b[0][0] = 99
+print(a)   # unchanged
+```
+
+#### copy Module
+
+Python provides built-in module for copying.
+
+```python
+import copy
+
+copy.copy(obj)      # shallow copy
+copy.deepcopy(obj)  # deep copy
+```
+
+#### Key Difference
+
+* Shallow copy → copies outer object only
+* Deep copy → copies everything recursively
 
 ---
-
-## 23. Serialization
-Convert object → storable format  
-
-Tools:
-- JSON  
-- Pickle  
-
----
-
-## 24. Immutability
-Objects that cannot change  
-
-Examples:
-- tuple  
-- frozen dataclass  
