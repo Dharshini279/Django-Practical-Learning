@@ -1,6 +1,6 @@
 ## Python OOP — Complete Concepts with Simple Explanations
 
-### 1. OOP Basics (Clear Notes)
+### 1. OOP Basics
 
 #### Class
 A **class** is a blueprint/template used to create objects.  
@@ -98,7 +98,7 @@ c1 = Car()
 c2 = Car()
 ```
 ---
-## 2. Encapsulation (Clear Notes)
+## 2. Encapsulation
 
 #### What is Encapsulation?
 Encapsulation means **bundling data (variables) and methods (functions) inside a class**  
@@ -222,7 +222,7 @@ obj.x = 50     # setter
 
 ---
 
-### 3. Abstraction (Clear Notes)
+### 3. Abstraction
 
 #### What is Abstraction?
 Abstraction means **hiding internal implementation details**  
@@ -301,22 +301,144 @@ d.sound()
 
 ---
 
-## 4. Inheritance
-- Child class gets parent features  
+### 4. Inheritance (Clear Notes)
 
-Types:
-- Single  
-- Multiple  
-- Multilevel  
-- Hierarchical  
-- Hybrid  
+#### What is Inheritance?
+Inheritance allows a **child class** to use properties and methods of a **parent class**.  
+It helps reuse code and extend functionality without rewriting.
 
-Concepts:
-- Method overriding  
-- `super()` → call parent method  
-- MRO → method lookup order  
+Purpose: Code reuse and better structure.
 
-Purpose: Code reuse
+---
+
+#### Basic Example
+```python
+class Animal:
+    def eat(self):
+        print("Eating")
+
+class Dog(Animal):
+    pass
+
+d = Dog()
+d.eat()   # inherited method
+````
+---
+
+#### Types of Inheritance
+
+#### 1. Single Inheritance
+
+One child inherits from one parent.
+
+```python
+class A:
+    pass
+
+class B(A):
+    pass
+```
+---
+
+#### 2. Multiple Inheritance
+
+Child inherits from multiple parents.
+
+```python
+class A: pass
+class B: pass
+
+class C(A, B):
+    pass
+```
+---
+
+#### 3. Multilevel Inheritance
+
+Chain of inheritance (grandparent → parent → child).
+
+```python
+class A: pass
+class B(A): pass
+class C(B): pass
+```
+---
+
+#### 4. Hierarchical Inheritance
+
+Multiple children inherit from one parent.
+
+```python
+class A: pass
+
+class B(A): pass
+class C(A): pass
+```
+---
+
+#### 5. Hybrid Inheritance
+
+Combination of multiple types.
+
+```python
+class A: pass
+class B(A): pass
+class C(A): pass
+class D(B, C): pass
+```
+---
+
+#### Method Overriding
+
+Child class provides its own version of a parent method.
+
+```python
+class A:
+    def show(self):
+        print("Parent")
+
+class B(A):
+    def show(self):
+        print("Child")
+```
+---
+
+#### super()
+
+Used to call parent class method from child class.
+
+```python
+class A:
+    def show(self):
+        print("Parent")
+
+class B(A):
+    def show(self):
+        super().show()
+        print("Child")
+```
+---
+
+#### MRO (Method Resolution Order)
+
+Defines order Python searches for methods in inheritance.
+Important in multiple inheritance.
+
+```python
+class A: pass
+class B(A): pass
+
+print(B.mro())
+```
+---
+
+#### Why Use Inheritance?
+
+* Reuse existing code
+* Avoid duplication
+* Extend functionality
+* Maintain clean structure
+* Easy maintenance
 
 ---
 
