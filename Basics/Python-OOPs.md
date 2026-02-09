@@ -98,22 +98,125 @@ c1 = Car()
 c2 = Car()
 ```
 ---
+# 2. Encapsulation (Clear Notes)
 
-## 2. Encapsulation
-- Bundling data + methods together  
-- Controls access to variables  
+### What is Encapsulation?
+Encapsulation means **bundling data (variables) and methods (functions) inside a class**  
+and **controlling how that data is accessed or modified** from outside.
 
-Types:
-- Public → accessible anywhere  
-- Protected `_var` → internal use  
-- Private `__var` → name-mangled  
+Purpose: Protect data and prevent direct unwanted changes.
+---
 
-Tools:
-- Getter → get value  
-- Setter → set value  
-- `@property` → access method like variable  
+## Types of Access
 
-Purpose: Data protection
+### 1. Public Variable
+Accessible from anywhere (inside or outside class).
+
+```python
+class A:
+    def __init__(self):
+        self.name = "John"   # public
+
+obj = A()
+print(obj.name)   # accessible
+````
+---
+
+### 2. Protected Variable `_var`
+
+Used internally within class or subclass.
+Can be accessed outside, but treated as internal by convention.
+
+```python
+class A:
+    def __init__(self):
+        self._age = 25   # protected
+
+obj = A()
+print(obj._age)   # possible but not recommended
+```
+---
+
+### 3. Private Variable `__var`
+
+Cannot be accessed directly outside class.
+Python uses **name mangling** to protect it.
+
+```python
+class A:
+    def __init__(self):
+        self.__salary = 50000   # private
+
+obj = A()
+# print(obj.__salary)  ❌ error
+```
+
+Access internally only.
+---
+
+## Getter and Setter
+
+### Getter → read value safely
+
+Used to access private data.
+
+```python
+class A:
+    def __init__(self):
+        self.__x = 10
+
+    def get_x(self):
+        return self.__x
+```
+---
+
+### Setter → update value safely
+
+Used to modify private data with control.
+
+```python
+class A:
+    def __init__(self):
+        self.__x = 10
+
+    def set_x(self, value):
+        self.__x = value
+```
+---
+
+## Property Decorator (Best Practice)
+
+Allows method to be used like a variable.
+
+```python
+class A:
+    def __init__(self):
+        self._x = 10
+
+    @property
+    def x(self):
+        return self._x
+
+    @x.setter
+    def x(self, value):
+        self._x = value
+```
+Usage:
+
+```python
+obj = A()
+print(obj.x)   # getter
+obj.x = 50     # setter
+```
+---
+
+## 🔹 Purpose of Encapsulation
+
+* Protect sensitive data
+* Control access
+* Prevent direct modification
+* Maintain clean structure
+* Add validation logic
 
 ---
 
