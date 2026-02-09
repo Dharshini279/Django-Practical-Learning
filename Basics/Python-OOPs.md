@@ -1,15 +1,102 @@
 # Python OOP — Complete Concepts with Simple Explanations
 
-## 1. OOP Basics
-- **Class** → Blueprint for creating objects  
-- **Object** → Instance of a class  
-- **Attributes** → Variables inside class/object  
-- **Methods** → Functions inside class  
-- **self** → Refers to current object  
-- **__init__** → Constructor called when object created  
-- **Instance variable** → Unique per object  
-- **Class variable** → Shared across all objects  
+# 1. OOP Basics (Clear Notes)
 
+### Class
+A **class** is a blueprint/template used to create objects.  
+It defines variables (attributes) and functions (methods) that objects will have.
+
+```python
+class Car:
+    pass
+````
+---
+
+### Object
+
+An **object** is an instance of a class.
+It is the real usable entity created from the class blueprint.
+
+```python
+c1 = Car()   # object of Car class
+```
+---
+
+### Attributes
+
+**Attributes** are variables inside a class or object that store data.
+They represent the state/data of an object.
+
+```python
+class Car:
+    def __init__(self):
+        self.color = "red"
+```
+---
+
+### Methods
+
+**Methods** are functions defined inside a class.
+They describe what an object can do (its behavior).
+
+```python
+class Car:
+    def start(self):
+        print("Car started")
+```
+---
+
+### self
+
+`self` refers to the **current object instance**.
+It is used to access instance variables and methods inside the class.
+
+```python
+class Car:
+    def show(self):
+        print(self)
+```
+---
+
+### **init** (Constructor)
+
+`__init__` is a special method that runs automatically when an object is created.
+It is used to initialize object data.
+
+```python
+class Car:
+    def __init__(self, color):
+        self.color = color
+```
+---
+
+### Instance Variable
+
+An **instance variable** belongs to a specific object.
+Each object can have different values.
+
+```python
+class Car:
+    def __init__(self, color):
+        self.color = color
+
+c1 = Car("red")
+c2 = Car("blue")
+```
+---
+
+### Class Variable
+
+A **class variable** is shared by all objects of the class.
+Changing it affects all instances.
+
+```python
+class Car:
+    wheels = 4   # class variable
+
+c1 = Car()
+c2 = Car()
+```
 ---
 
 ## 2. Encapsulation
