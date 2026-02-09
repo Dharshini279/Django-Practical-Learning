@@ -105,6 +105,7 @@ Encapsulation means **bundling data (variables) and methods (functions) inside a
 and **controlling how that data is accessed or modified** from outside.
 
 Purpose: Protect data and prevent direct unwanted changes.
+
 ---
 
 #### Types of Access
@@ -230,6 +231,7 @@ and showing only the **necessary functionality** to the user.
 The user knows *what a class does*, but not *how it does it*.
 
 Purpose: Reduce complexity and protect internal logic.
+
 ---
 
 #### Real-Life Idea
@@ -238,6 +240,7 @@ When you drive a car:
 - You don’t know engine internals  
 
 That is abstraction.
+
 ---
 
 #### How to Implement in Python
@@ -281,7 +284,7 @@ d.sound()
 ```
 ---
 
-## Why Use Abstraction?
+#### Why Use Abstraction?
 
 * Hide complex logic
 * Force child classes to implement required methods
