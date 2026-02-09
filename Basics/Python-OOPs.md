@@ -1,5 +1,4 @@
 ## Python OOP — Complete Concepts with Simple Explanations
----
 
 ### 1. OOP Basics
 
@@ -93,7 +92,7 @@ c2 = Car()
 ```
 ---
 
-## 2. Encapsulation
+### 2. Encapsulation
 
 #### What is Encapsulation?
 Encapsulation means **bundling data (variables) and methods (functions) inside a class**  
