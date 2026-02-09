@@ -421,15 +421,19 @@ class B(A):
 
 #### MRO (Method Resolution Order)
 
-Defines order Python searches for methods in inheritance.
-Important in multiple inheritance.
+MRO defines the **order in which Python looks for methods and attributes** in a class hierarchy.  
+It becomes very important when using **multiple inheritance**, because Python must decide which parent class method to run first.
 
 ```python
 class A: pass
 class B(A): pass
 
 print(B.mro())
-```
+````
+Output order shows:
+`B → A → object`
+Python searches methods in this exact order.
+
 ---
 
 #### Why Use Inheritance?
