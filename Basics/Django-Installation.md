@@ -111,5 +111,3 @@ venv\Scripts\activate        # Windows
 ```
 
 ---
-Next step later (when you say):
-👉 Start Django project inside this env
