@@ -1,4 +1,4 @@
-# BASICS (Foundation)
+## BASICS (Foundation)
     
     Python OOP recap
     Virtualenv & pip
@@ -21,7 +21,7 @@
     CSRF protection
     Middleware basics
 
-# INTERMEDIATE DJANGO
+## INTERMEDIATE DJANGO
 
     Class-Based Views (CBV)
     Generic Views (ListView, DetailView, etc.)
@@ -46,7 +46,7 @@
     Environment variables
     Django settings split (dev/prod)
 
-# DJANGO ADVANCED
+## DJANGO ADVANCED
 
     Middleware deep dive
     Custom middleware
@@ -69,7 +69,7 @@
     Internationalization (i18n)
     Timezones
 
-# DJANGO REST FRAMEWORK (VERY IMPORTANT)
+## DJANGO REST FRAMEWORK (VERY IMPORTANT)
 
     DRF setup
     Serializers
@@ -96,7 +96,7 @@
     API versioning
     Swagger/OpenAPI
 
-# PERFORMANCE & SCALING
+## PERFORMANCE & SCALING
 
     Query optimization
     N+1 problem
@@ -112,7 +112,7 @@
     Load balancing
     Horizontal scaling
 
-TESTING
+## TESTING
 
     Django test framework
     TestCase
@@ -122,7 +122,7 @@ TESTING
     Integration tests
     Coverage
 
-# DEPLOYMENT & DEVOPS
+## DEPLOYMENT & DEVOPS
 
     Gunicorn
     Nginx
@@ -135,7 +135,7 @@ TESTING
     Static/media in production
     AWS/GCP deployment
 
-# ARCHITECTURE & CLEAN CODE
+## ARCHITECTURE & CLEAN CODE
 
     Service layer pattern
     Repository pattern
@@ -151,9 +151,6 @@ TESTING
     Custom database backends
     Metaclasses in Django models
     Performance profiling
-    
     Multi-tenant architecture
-    
     Sharding
-    
     Event-driven architecture
