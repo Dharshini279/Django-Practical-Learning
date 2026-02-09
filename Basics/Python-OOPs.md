@@ -709,7 +709,7 @@ class Car:
 
 ---
 
-### 10. Dataclasses (Clear Notes)
+### 10. Dataclasses
 
 #### What is a Dataclass?
 A dataclass is a special class used mainly to store data.  
@@ -812,7 +812,7 @@ u.city = "Chennai"   # ❌ Error
 
 ---
 
-### 12. Metaclasses (Advanced — Clear Notes)
+### 12. Metaclasses
 
 #### What is a Metaclass?
 A metaclass is a **class that creates other classes**.  
@@ -874,7 +874,7 @@ When class `A` is created → metaclass runs first.
 
 ---
 
-### 14. Context Managers (Clear Notes)
+### 14. Context Managers
 
 #### What is a Context Manager?
 A context manager is used with the `with` statement to **manage resources automatically**.  
@@ -928,7 +928,7 @@ Python automatically:
 
 ---
 
-### 15. Descriptors (Advanced — Clear Notes)
+### 15. Descriptors
 
 #### What is a Descriptor?
 A descriptor is a class that **controls how attributes are accessed, set, or deleted**.  
@@ -978,7 +978,7 @@ descriptor methods automatically run and control the behavior.
 
 ---
 
-### 16. Copying Objects (Clear Notes)
+### 16. Copying Objects
 
 #### Why Copy Objects?
 Copying creates a new object from an existing one.  
