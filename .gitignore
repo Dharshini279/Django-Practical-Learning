@@ -1,6 +1,14 @@
-.env/
+# Python virtual environment
+env/
+venv/
+
+# Python cache files
 __pycache__/
-db.sqlite3
-.env
 *.pyc
-lib/
+*.pyo
+
+# Environment variables
+.env
+
+# VS Code settings
+.vscode/
