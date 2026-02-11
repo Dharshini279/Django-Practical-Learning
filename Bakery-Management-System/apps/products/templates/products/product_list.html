@@ -1,0 +1,23 @@
+{% extends "products/base.html" %}
+{% block content %}
+
+<h1>Products</h1>
+
+<a class="btn" href="{% url 'products:create' %}">+ Add Product</a>
+
+<div class="card-grid">
+    {% for product in products %}
+        <div class="card">
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.category.name }}</p>
+
+            <a class="btn" href="{% url 'products:detail' product.id %}">
+                View
+            </a>
+        </div>
+    {% empty %}
+        <p>No products found</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

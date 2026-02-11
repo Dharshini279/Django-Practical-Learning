@@ -1,18 +1,15 @@
 {% extends "products/base.html" %}
 {% block content %}
 
-<h1>Create Product</h1>
+<h1>Create Category</h1>
 
 <form method="post" class="form-box">
     {% csrf_token %}
 
-    <h3>Product Info</h3>
+    <h3>Category Info</h3>
     {{ form.as_p }}
 
-    <h3>Variant Info</h3>
-    {{ variant_form.as_p }}
-
-    <button class="btn">Save Product</button>
+    <button class="btn">Save Category</button>
 </form>
 
 {% endblock %}

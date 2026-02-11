@@ -1,0 +1,14 @@
+{% extends "products/base.html" %}
+{% block content %}
+
+<h1>Categories</h1>
+
+<div class="category-list">
+    {% for c in categories %}
+        <div class="category-item">{{ c.name }}</div>
+    {% empty %}
+        <p>No categories</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

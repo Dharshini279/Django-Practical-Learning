@@ -1,0 +1,30 @@
+{% extends "products/base.html" %}
+{% block content %}
+
+<h2>{{ product.name }}</h2>
+
+<p>{{ product.description }}</p>
+<p><b>Category:</b> {{ product.category.name }}</p>
+
+<h3>Variants</h3>
+
+<table>
+    <tr>
+        <th>Size</th>
+        <th>Price</th>
+        <th>SKU</th>
+    </tr>
+
+    {% for v in product.variants.all %}
+    <tr>
+        <td>{{ v.size }}</td>
+        <td>₹{{ v.price }}</td>
+        <td>{{ v.sku }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<a class="btn" href="{% url 'products:list' %}">Back</a>
+
+{% endblock %}
