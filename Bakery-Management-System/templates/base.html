@@ -8,12 +8,15 @@
 <body>
 
 <nav class="navbar">
-    <div class="nav-left">
+    <div class="nav-links">
         <a href="{% url 'products:list' %}">Products</a>
         <a href="{% url 'products:create' %}">Create Product</a>
         <a href="{% url 'products:categories' %}">Categories</a>
         <a href="{% url 'products:category_create' %}">Create Category</a>
     </div>
+     <a href="/" class="logo-link">
+            <img src="{% static 'images/mooncake_logo.png' %}" alt="Moon Cake">
+        </a>
 </nav>
 
 <div class="container">

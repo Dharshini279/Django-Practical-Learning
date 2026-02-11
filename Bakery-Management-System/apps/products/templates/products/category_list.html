@@ -1,14 +1,29 @@
-{% extends "products/base.html" %}
+{% extends "base.html" %}
 {% block content %}
 
-<h1>Categories</h1>
+<div class="container">
 
-<div class="category-list">
-    {% for c in categories %}
-        <div class="category-item">{{ c.name }}</div>
-    {% empty %}
-        <p>No categories</p>
-    {% endfor %}
+    <div class="top-bar">
+        <h1>Categories</h1>
+        <a class="btn" href="{% url 'products:category_create' %}">
+            + Add Category
+        </a>
+    </div>
+
+    <div class="card-grid">
+        {% for c in categories %}
+            <div class="card">
+                 <a href="{% url 'products:category_products' c.id %}">
+                    {{ c.name }}
+                </a>
+            </div>
+        {% empty %}
+            <div class="empty-message">
+                <p>No categories found</p>
+            </div>
+        {% endfor %}
+    </div>
+
 </div>
 
 {% endblock %}

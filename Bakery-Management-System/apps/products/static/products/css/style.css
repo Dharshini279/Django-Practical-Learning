@@ -1,142 +1,281 @@
 :root {
-    --aqua: #00bcd4;
-    --light-blue: #e3f6fd;
-    --dark: #0f172a;
+    --primary: #00bcd4;
+    --accent: #4caf50;
+    --light-bg: #f4fbfd;
     --white: #ffffff;
-    --border: #e6eef5;
+    --dark: #1e293b;
+    --border: #e2e8f0;
 }
 
 /* RESET */
-body {
+* {
     margin: 0;
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: var(--light-blue);
-    color: var(--dark);
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* NAVBAR */
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--light-bg);
+    color: var(--dark);
+    padding-top: 90px; /* For fixed navbar */
+}
+
+/* ================= NAVBAR LOGO ================= */
+
 .navbar {
-    background: var(--dark);
-    padding: 18px 40px;
+    height: 80px;
+    position: fixed;
+    background: linear-gradient(
+        to left,
+        #e6dfbf 10%,     
+        #4ecdc4 50%,     
+        #ffd54f 100%     
+    );
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #ffffff;
+    font-weight: 500;
+    text-decoration: none;
+    margin-right: 40px;
+    margin-left: 40px;
+}
+
+.nav-links a:hover {
+    color: #aa8514;   /* Soft gold hover */
+}
+
+.logo a {
+    text-decoration: none;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 10px;
+}
+.logo-link img {
+    max-height: 150px;
+    width: auto;
+    object-fit: contain;
 }
 
-.nav-left a {
-    color: var(--white);
-    text-decoration: none;
-    margin-right: 25px;
-    font-weight: 500;
-}
+/* ================= CONTAINER ================= */
 
-.nav-left a:hover {
-    color: var(--aqua);
-}
-
-/* CONTAINER */
 .container {
-    padding: 40px;
-    max-width: 1200px;
+    max-width: 1100px;
     margin: auto;
+    padding: 30px 20px 60px;
 }
 
-/* BUTTON */
+/* ================= HEADINGS ================= */
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    margin-top: 25px;
+    color: var(--primary);
+}
+
+h3 {
+    margin-bottom: 10px;
+}
+
+/* ================= BUTTON ================= */
+
 .btn {
-    background: var(--aqua);
+    background: var(--primary);
     color: white;
     padding: 10px 18px;
-    border-radius: 6px;
+    border-radius: 10px;
     text-decoration: none;
     border: none;
     cursor: pointer;
     font-weight: 500;
+    transition: 0.3s ease;
+    display: inline-block;
 }
 
 .btn:hover {
-    background: #00a0b5;
+    background: var(--accent);
+    transform: translateY(-2px);
 }
 
-/* CARD GRID */
+/* ================= PRODUCT LIST ================= */
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 25px;
-    margin-top: 20px;
 }
 
-/* CARD */
 .card {
     background: var(--white);
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    transition: 0.2s;
+    padding: 22px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    transition: 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0px 10px 25px rgba(0,0,0,0.08);
-}
-
-.card h3 {
-    margin: 0 0 10px;
+    transform: translateY(-6px);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.1);
 }
 
 .card p {
     color: #555;
+    margin-bottom: 15px;
 }
 
-/* TABLE */
+.empty-message {
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 15px;
+}
+
+/* ================= PRODUCT DETAIL TABLE ================= */
+
 table {
     width: 100%;
     border-collapse: collapse;
     background: white;
     margin-top: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
 }
 
 th, td {
-    padding: 14px;
-    border-bottom: 1px solid var(--border);
+    padding: 14px 16px;
     text-align: left;
 }
 
 th {
-    background: var(--light-blue);
+    background: var(--primary);
+    color: white;
+    font-weight: 500;
 }
 
-/* FORM */
+tr:nth-child(even) {
+    background: #f9fafb;
+}
+
+/* ================= FORM ================= */
+
 .form-box {
     background: white;
-    padding: 30px;
-    border-radius: 12px;
-    width: 500px;
-    border: 1px solid var(--border);
+    padding: 35px;
+    border-radius: 20px;
+    max-width: 700px;
+    margin: auto;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+.form-box p {
+    margin-bottom: 18px;
+}
+
+.form-box label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
 }
 
 .form-box input,
 .form-box select,
 .form-box textarea {
     width: 100%;
-    padding: 10px;
-    margin-top: 6px;
-    margin-bottom: 15px;
+    padding: 12px 14px;
+    border-radius: 10px;
     border: 1px solid var(--border);
-    border-radius: 6px;
+    font-size: 14px;
+    transition: 0.2s;
 }
 
-h1, h2 {
-    margin-bottom: 20px;
+.form-box input:focus,
+.form-box select:focus,
+.form-box textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(0,188,212,0.15);
 }
 
-/* CATEGORY LIST */
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Checkbox alignment */
+.form-box input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+}
+
+/* ================= CATEGORY LIST ================= */
+
 .category-list {
     background: white;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    max-width: 600px;
 }
 
 .category-item {
-    padding: 10px 0;
+    padding: 12px 0;
     border-bottom: 1px solid var(--border);
+    font-size: 16px;
+}
+
+.category-item:last-child {
+    border-bottom: none;
+}
+
+/* ================= PRODUCT DETAIL ================= */
+
+.detail-card {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+}
+
+.detail-card h1 {
+    margin-bottom: 15px;
+    color: var(--primary);
+}
+
+.description {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.table-wrapper {
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+.detail-card table {
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
 }
