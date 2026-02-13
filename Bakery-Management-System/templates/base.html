@@ -9,11 +9,27 @@
 
 <nav class="navbar">
     <div class="nav-links">
-        <a href="{% url 'products:list' %}">Products</a>
-        <a href="{% url 'products:create' %}">Create Product</a>
-        <a href="{% url 'products:categories' %}">Categories</a>
-        <a href="{% url 'products:category_create' %}">Create Category</a>
+        <a href="{% url 'products:list' %}"
+        class="{% if request.path == '/products/' %}active{% endif %}">
+        Products
+        </a>
+
+        <a href="{% url 'products:create' %}"
+        class="{% if request.path == '/products/create/' %}active{% endif %}">
+        Create Product
+        </a>
+
+        <a href="{% url 'products:categories' %}"
+        class="{% if request.path == '/products/categories/' %}active{% endif %}">
+        Categories
+        </a>
+
+        <a href="{% url 'products:category_create' %}"
+        class="{% if request.path == '/products/categories/create/' %}active{% endif %}">
+        Create Category
+        </a>
     </div>
+
      <a href="/" class="logo-link">
             <img src="{% static 'images/mooncake_logo.png' %}" alt="Moon Cake">
         </a>

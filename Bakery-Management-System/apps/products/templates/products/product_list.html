@@ -3,11 +3,37 @@
 
 <div class="container">
 
-    <div class="top-bar">
-        <h1>Our Products</h1>
-        <a class="btn" href="{% url 'products:create' %}">+ Add Product</a>
+    <div class="hero">
+        <h2>Welcome to MoonCake Admin 🍰</h2>
+        <p>Manage products, categories and variants</p>
     </div>
 
+
+    <!-- STATS -->
+    <div class="stats">
+        <div class="stat-card">
+            {{ products|length }}
+            <span>Products</span>
+        </div>
+        <div class="stat-card">
+            {{ categories_count }}
+            <span>Categories</span>
+        </div>
+        <div class="stat-card">
+            {{ new_today }}
+            <span>New Today</span>
+        </div>
+    </div>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <h1>Our Products</h1>
+        <a class="btn" href="{% url 'products:create' %}">
+            + Add Product
+        </a>
+    </div>
+
+    <!-- GRID -->
     <div class="card-grid">
         {% for product in products %}
             <div class="card">
